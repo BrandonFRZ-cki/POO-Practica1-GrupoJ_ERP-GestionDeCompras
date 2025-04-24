@@ -1,0 +1,47 @@
+package ec.edu.ups;
+
+import java.util.Objects;
+
+public class Empleado extends Persona {
+    private Departamento departameto;
+
+    public Empleado(){
+
+    }
+
+    public Empleado(Departamento departameto) {
+        this.departameto = departameto;
+    }
+
+    public Empleado(String identificacion, String nombre, String apellido, Departamento departameto) {
+        super(identificacion, nombre, apellido);
+        this.departameto = departameto;
+    }
+
+    public Departamento getDepartameto() {
+        return departameto;
+    }
+
+    public void setDepartameto(Departamento departameto) {
+        this.departameto = departameto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Empleado empleado = (Empleado) o;
+        return departameto == empleado.departameto;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(departameto);
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "departameto=" + departameto +
+                '}';
+    }
+}
