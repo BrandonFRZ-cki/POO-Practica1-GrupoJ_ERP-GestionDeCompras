@@ -26,17 +26,7 @@ public class Empleado extends Persona {
         this.departameto = departameto;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Empleado empleado = (Empleado) o;
-        return departameto == empleado.departameto;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(departameto);
-    }
 
     @Override
     public String toString() {

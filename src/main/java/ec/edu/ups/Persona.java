@@ -45,12 +45,12 @@ public class Persona {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Persona persona = (Persona) o;
-        return Objects.equals(identificacion, persona.identificacion) && Objects.equals(nombre, persona.nombre) && Objects.equals(apellido, persona.apellido);
+        return Objects.equals(identificacion, persona.identificacion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identificacion, nombre, apellido);
+        return Objects.hashCode(identificacion);
     }
 
     @Override

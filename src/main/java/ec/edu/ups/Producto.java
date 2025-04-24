@@ -2,26 +2,29 @@ package ec.edu.ups;
 
 import java.util.Objects;
 
-public class Producto {
-    private int idProducto;
+public abstract class Producto {
+    private String idProducto;
     private String nombre;
     private double precioUnitario;
+    private boolean aplicaIVA;
+
 
     public Producto(){
 
     }
 
-    public Producto(int idProducto, String nombre, double precioUnitario) {
+    public Producto(String idProducto, String nombre, double precioUnitario, boolean aplicaIVA) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
+        this.aplicaIVA = aplicaIVA;
     }
 
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -41,24 +44,33 @@ public class Producto {
         this.precioUnitario = precioUnitario;
     }
 
+    public boolean isAplicaIVA() {
+        return aplicaIVA;
+    }
+
+    public void setAplicaIVA(boolean aplicaIVA) {
+        this.aplicaIVA = aplicaIVA;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return idProducto == producto.idProducto && Double.compare(precioUnitario, producto.precioUnitario) == 0 && Objects.equals(nombre, producto.nombre);
+        return Objects.equals(idProducto, producto.idProducto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProducto, nombre, precioUnitario);
+        return Objects.hashCode(idProducto);
     }
 
     @Override
     public String toString() {
         return "Producto{" +
-                "idProducto=" + idProducto +
+                "idProducto='" + idProducto + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", precioUnitario=" + precioUnitario +
+                ", aplicaIVA=" + aplicaIVA +
                 '}';
     }
 }

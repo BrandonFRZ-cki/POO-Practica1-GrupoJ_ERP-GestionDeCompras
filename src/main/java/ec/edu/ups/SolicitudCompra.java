@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
-public class SolicitudCompra {
+public class SolicitudCompra implements Calculable {
     private int idSolicitud;
     private Empleado solicitante;
     private EstadoSolicitud estado;
@@ -13,12 +13,13 @@ public class SolicitudCompra {
     private String detalleMaterialesSolcitados;
     private String observaciones;
     private List<DetalleCompra> detalle;
+    private Calculable total;
 
     public SolicitudCompra(){
 
     }
 
-    public SolicitudCompra(int idSolicitud, Empleado solicitante, EstadoSolicitud estado, String motivo, GregorianCalendar fechaCreacion, String detalleMaterialesSolcitados, String observaciones, List<DetalleCompra> detalle) {
+    public SolicitudCompra(int idSolicitud, Empleado solicitante, EstadoSolicitud estado, String motivo, GregorianCalendar fechaCreacion, String detalleMaterialesSolcitados, String observaciones, List<DetalleCompra> detalle, Calculable total) {
         this.idSolicitud = idSolicitud;
         this.solicitante = solicitante;
         this.estado = estado;
@@ -27,6 +28,7 @@ public class SolicitudCompra {
         this.detalleMaterialesSolcitados = detalleMaterialesSolcitados;
         this.observaciones = observaciones;
         this.detalle = detalle;
+        this.total = total;
     }
 
     public int getIdSolicitud() {
@@ -93,6 +95,20 @@ public class SolicitudCompra {
         this.detalle = detalle;
     }
 
+    public Calculable getTotal() {
+        return total;
+    }
+
+    public void setTotal(Calculable total) {
+        this.total = total;
+    }
+
+
+    public void cambiarEstado(EstadoSolicitud nuevoEstado, Gerente gerente){
+
+    }
+
+    @Override
     public double calcularCostoTotal(){
         return 0;
     }
@@ -101,12 +117,12 @@ public class SolicitudCompra {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         SolicitudCompra that = (SolicitudCompra) o;
-        return idSolicitud == that.idSolicitud && Objects.equals(solicitante, that.solicitante) && estado == that.estado && Objects.equals(motivo, that.motivo) && Objects.equals(fechaCreacion, that.fechaCreacion) && Objects.equals(detalleMaterialesSolcitados, that.detalleMaterialesSolcitados) && Objects.equals(observaciones, that.observaciones) && Objects.equals(detalle, that.detalle);
+        return idSolicitud == that.idSolicitud && Objects.equals(solicitante, that.solicitante) && estado == that.estado && Objects.equals(motivo, that.motivo) && Objects.equals(fechaCreacion, that.fechaCreacion) && Objects.equals(detalleMaterialesSolcitados, that.detalleMaterialesSolcitados) && Objects.equals(observaciones, that.observaciones) && Objects.equals(detalle, that.detalle) && Objects.equals(total, that.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSolicitud, solicitante, estado, motivo, fechaCreacion, detalleMaterialesSolcitados, observaciones, detalle);
+        return Objects.hash(idSolicitud, solicitante, estado, motivo, fechaCreacion, detalleMaterialesSolcitados, observaciones, detalle, total);
     }
 
     @Override
@@ -120,6 +136,7 @@ public class SolicitudCompra {
                 ", detalleMaterialesSolcitados='" + detalleMaterialesSolcitados + '\'' +
                 ", observaciones='" + observaciones + '\'' +
                 ", detalle=" + detalle +
+                ", total=" + total +
                 '}';
     }
 }

@@ -71,17 +71,6 @@ public class Direccion {
         this.pais = pais;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Direccion direccion = (Direccion) o;
-        return Objects.equals(callePrincipal, direccion.callePrincipal) && Objects.equals(calleSegundaria, direccion.calleSegundaria) && Objects.equals(numeracion, direccion.numeracion) && Objects.equals(ciudad, direccion.ciudad) && Objects.equals(provincia, direccion.provincia) && Objects.equals(pais, direccion.pais);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(callePrincipal, calleSegundaria, numeracion, ciudad, provincia, pais);
-    }
 
     @Override
     public String toString() {

@@ -1,6 +1,5 @@
-package ec.edu.ups.proveedor;
+package ec.edu.ups;
 
-import ec.edu.ups.Paquete;
 import ec.edu.ups.Persona;
 import ec.edu.ups.Producto;
 
@@ -12,20 +11,26 @@ public class Proveedor extends Persona {
     private List<Producto> productos;
     private String direccion;
     private String telefono;
-    private List<Paquete> paquete;
+
 
 
     public Proveedor() {
 
     }
 
-    public Proveedor(String identificacion, String nombre, String apellido, String detalleProvedor, List<Producto> productos, String direccion, String telefono, List<Paquete> paquete) {
+    public Proveedor(String detalleProvedor, List<Producto> productos, String direccion, String telefono) {
+        this.detalleProvedor = detalleProvedor;
+        this.productos = productos;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+
+    public Proveedor(String identificacion, String nombre, String apellido, String detalleProvedor, List<Producto> productos, String direccion, String telefono) {
         super(identificacion, nombre, apellido);
         this.detalleProvedor = detalleProvedor;
         this.productos = productos;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.paquete = paquete;
     }
 
     public String getDetalleProvedor() {
@@ -60,28 +65,8 @@ public class Proveedor extends Persona {
         this.telefono = telefono;
     }
 
-    public List<Paquete> getPaquete() {
-        return paquete;
-    }
-
-    public void setPaquete(List<Paquete> paquete) {
-        this.paquete = paquete;
-    }
-
-    public void addProducto (Producto producto){
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Proveedor proveedor = (Proveedor) o;
-        return Objects.equals(detalleProvedor, proveedor.detalleProvedor) && Objects.equals(productos, proveedor.productos) && Objects.equals(direccion, proveedor.direccion) && Objects.equals(telefono, proveedor.telefono) && Objects.equals(paquete, proveedor.paquete);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), detalleProvedor, productos, direccion, telefono, paquete);
+    public void addProducto(Producto producto){
+        productos.add(producto);
     }
 
     @Override
@@ -91,7 +76,6 @@ public class Proveedor extends Persona {
                 ", productos=" + productos +
                 ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", paquete=" + paquete +
                 '}';
     }
 }

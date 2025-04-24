@@ -21,23 +21,12 @@ public class Gerente extends Empleado {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+
     public boolean aprobar (String intentoContrasena){
         return false;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Gerente gerente = (Gerente) o;
-        return Objects.equals(contrasena, gerente.contrasena);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), contrasena);
-    }
 
     @Override
     public String toString() {
