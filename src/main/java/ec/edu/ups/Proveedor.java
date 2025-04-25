@@ -1,10 +1,8 @@
 package ec.edu.ups;
 
-import ec.edu.ups.Persona;
-import ec.edu.ups.Producto;
-
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 public class Proveedor extends Persona {
     private String detalleProvedor;
@@ -15,22 +13,15 @@ public class Proveedor extends Persona {
 
 
     public Proveedor() {
-
+        this.productos = new ArrayList<>();
     }
-
-    public Proveedor(String detalleProvedor, List<Producto> productos, String direccion, String telefono) {
-        this.detalleProvedor = detalleProvedor;
-        this.productos = productos;
-        this.direccion = direccion;
-        this.telefono = telefono;
-    }
-
-    public Proveedor(String identificacion, String nombre, String apellido, String detalleProvedor, List<Producto> productos, String direccion, String telefono) {
+    public Proveedor(String identificacion, String nombre, String apellido, String detalleProvedor,  String direccion, String telefono) {
         super(identificacion, nombre, apellido);
         this.detalleProvedor = detalleProvedor;
-        this.productos = productos;
         this.direccion = direccion;
         this.telefono = telefono;
+
+        this.productos = new ArrayList<>();
     }
 
     public String getDetalleProvedor() {

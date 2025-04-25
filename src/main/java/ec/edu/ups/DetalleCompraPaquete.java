@@ -1,5 +1,6 @@
 package ec.edu.ups;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -8,13 +9,14 @@ public abstract class DetalleCompraPaquete extends DetalleCompra implements Calc
     private double descuento;
 
     public DetalleCompraPaquete() {
-
+        this.productos = new ArrayList<>();
     }
 
-    public DetalleCompraPaquete(int id, int cantidad, String descricion, Calculable precioCompre, double descuento, List<Producto> productos) {
+    public DetalleCompraPaquete(int id, int cantidad, String descricion, Calculable precioCompre, double descuento) {
         super(id, cantidad, descricion, precioCompre);
         this.descuento = descuento;
-        this.productos = productos;
+
+        this.productos = new ArrayList<>();
     }
 
     public double getDescuento() {
