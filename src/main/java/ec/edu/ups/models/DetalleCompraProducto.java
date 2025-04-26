@@ -1,6 +1,4 @@
-package ec.edu.ups;
-
-import java.util.Objects;
+package ec.edu.ups.models;
 
 public abstract class DetalleCompraProducto extends DetalleCompra implements Calculable {
     private UnidadMedida unidadMedida;

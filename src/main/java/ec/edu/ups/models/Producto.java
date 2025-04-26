@@ -1,8 +1,8 @@
-package ec.edu.ups;
+package ec.edu.ups.models;
 
 import java.util.Objects;
 
-public abstract class Producto {
+public class Producto {
     private String idProducto;
     private String nombre;
     private double precioUnitario;
@@ -10,7 +10,6 @@ public abstract class Producto {
 
 
     public Producto(){
-
     }
 
     public Producto(String idProducto, String nombre, double precioUnitario, boolean aplicaIVA) {

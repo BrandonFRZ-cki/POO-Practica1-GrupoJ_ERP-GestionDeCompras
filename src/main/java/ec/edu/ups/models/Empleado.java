@@ -1,6 +1,4 @@
-package ec.edu.ups;
-
-import java.util.Objects;
+package ec.edu.ups.models;
 
 public class Empleado extends Persona {
     private Departamento departameto;
