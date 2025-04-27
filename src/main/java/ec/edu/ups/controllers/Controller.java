@@ -19,7 +19,7 @@ public class Controller {
             opcion=showConsole.showMenuPrincipal();
             switch (opcion) {
                 case 1:
-
+                    op1RegistrarProveedor();
                     break;
                 case 2:
                     op2RegistrarProducto();
@@ -56,7 +56,32 @@ public class Controller {
     }
 
 
+    public  void op1RegistrarProveedor() {
+        showConsole.showMessage("\n---- Ha seleccionado la opcion 1. \n\tRegistrar Proveedor para producto");
+        showConsole.showMessage("Lista de productos sin proveedor");
+        for (int i = 0; i < listsController.getProductos().size(); i++) {
+            if (listsController.getProductos().get(i).getProveedor().getNombre()==null){
+                System.out.println("id: ("+listsController.getProductos().get(i).getIdProducto()+"), Nombre: ("+listsController.getProductos().get(i).getNombre()+")");
+            }
+        }
+        String productoElejido = showConsole.showIngreseProductoSinProveedor();
+        for (int i = 0; i < listsController.getProductos().size(); i++) {
+            if(productoElejido.equals(listsController.getProductos().get(i).getIdProducto())){
+                listsController.getProductos().get(i).setProveedor(
+                        new Proveedor(
+                                showConsole.ingresoId("proveedor"),
+                                showConsole.ingresoNombre("proveedor"),
+                                showConsole.ingresoApellido("proveedor"),
+                                showConsole.ingresoTexto("\t\tDetalle:"),
+                                showConsole.ingresoDireccion(),
+                                showConsole.ingresoTexto("\t\tTelefono: ")
+                        )
+                );
+            }
+        }
 
+
+    }
     public void op2RegistrarProducto() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 2. \n\tRegistrar Producto:");
         int opcionCreacionProducto =0;
