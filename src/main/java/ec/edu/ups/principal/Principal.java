@@ -9,6 +9,7 @@ public class Principal {
         ejemplo.productosEjemplo();
         ejemplo.empleadoEjemplo();
         ejemplo.gerenteEjemplo();
+        ejemplo.solicitudEjemplo();
 
         Controller controller = new Controller(ejemplo.getListsController());
         controller.start();

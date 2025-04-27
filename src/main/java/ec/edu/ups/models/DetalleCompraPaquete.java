@@ -13,7 +13,7 @@ public abstract class DetalleCompraPaquete extends DetalleCompra implements Calc
     }
 
     public DetalleCompraPaquete(int id, int cantidad, String descricion, Calculable precioCompre, double descuento) {
-        super(id, cantidad, descricion, precioCompre);
+        super(id, cantidad);
         this.descuento = descuento;
 
         this.productos = new ArrayList<>();

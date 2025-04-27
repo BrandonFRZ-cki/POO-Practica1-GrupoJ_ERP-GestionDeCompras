@@ -33,7 +33,8 @@ public class Controller {
                     op5ListarProductos();
                     break;
                 case 6:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 6. \n\t-------------- Listar Solicitud de compra");
+
+                    op6ListarSolicitudes();
                     break;
                 case 7:
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 7. \n\t-------------- Buscar Proveedor por ID ");
@@ -132,5 +133,10 @@ public class Controller {
     public void op5ListarProductos() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 5. \n\tListar Productos");
         showConsole.showListaProductos(listsController.getProductos());
+    }
+    public void op6ListarSolicitudes() {
+        showConsole.showMessage("\n---- Ha seleccionado la opcion 6. \n\tListar Solicitud de compra");
+        showConsole.showListaSolicitudes(listsController.getSolicitudes());
+
     }
 }
