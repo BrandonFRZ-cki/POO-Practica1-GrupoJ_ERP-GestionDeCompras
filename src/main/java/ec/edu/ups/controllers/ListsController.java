@@ -59,11 +59,15 @@ public class ListsController {
 
     public void agregarProveedor(Proveedor proveedor) {
         proveedores.add(proveedor);
-        showConsole.showMessage(" * Proveedor agregado exitosamente\n* Lista de Proveedores ha Sido Modificada");
+        showConsole.showMessage("\n\t* Proveedor agregado exitosamente\n\t* Lista de Proveedores Modificada");
     }
     public void agregarProducto(Producto producto) {
         productos.add(producto);
-        showConsole.showMessage(" * Producto agregado exitosamente\n* Lista de Productos ha Sido Modificada");
+        showConsole.showMessage("\n\t* Producto agregado exitosamente\n\t* Lista de Productos Modificada");
+    }
+    public void agregarEmpleado(Empleado empleado) {
+        empleados.add(empleado);
+        showConsole.showMessage("\n\t* Empleado agregado exitosamente\n\t* Lista de Empleados Modificada");
     }
 
 

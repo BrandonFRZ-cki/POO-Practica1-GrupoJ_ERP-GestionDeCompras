@@ -1,5 +1,9 @@
 package ec.edu.ups.views;
 
+import ec.edu.ups.models.Producto;
+import ec.edu.ups.models.Proveedor;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class ShowConsole {
@@ -8,7 +12,7 @@ public class ShowConsole {
         System.out.println(mensaje);
     }
     public int showMenu() {
-        System.out.println("======= SISTEMA DE GESTIÓN DE COMPRAS =======");
+        System.out.println("\n======= SISTEMA DE GESTIÓN DE COMPRAS =======");
         System.out.println("-------------- MENU PRINCIPAL ---------------");
         System.out.println("1.  Resgistrar Proveedor");
         System.out.println("2.  Registrar Producto");
@@ -26,25 +30,41 @@ public class ShowConsole {
         return scanner.nextInt();
     }
     public String ingresoId(){
-        System.out.println("\n\t\tIngrese id : ");
-        return scanner.next();
+        System.out.print("\n\t\tIngrese id : ");
+        String id = scanner.next();
+        scanner.nextLine();
+        return id;
     }
     public String ingresoNombre(){
         System.out.print("\n\t\tIngrese el nombre: ");
-        return scanner.nextLine();
+        String nombre = scanner.nextLine();
+        return nombre;
     }
     public String ingresoApellido(){
         System.out.print("\n\t\tIngrese apellido: ");
-        return scanner.nextLine();
+        String apellido = scanner.nextLine();
+        return apellido;
     }
     public double ingresoPrecio(){
-        System.out.print("\n\t\tIngrese el precio: ");
-        return scanner.nextDouble();
+        System.out.print("\n\t\tIngrese el precio (con coma , ): ");
+        double precio = scanner.nextDouble();
+        return precio;
     }
     public boolean ingresoIVA(){
         System.out.print("\n\t\tTiene IVA? Si/NO: ");
         return scanner.next().equalsIgnoreCase("Si");
     }
+    public void listarProductos( List<Producto> productos) {
+        for (Producto producto : productos) {
+            System.out.println(producto);
+        }
+    }
+    public void listarProveedores( List<Proveedor> proveedores) {
+        for (Proveedor proveedor : proveedores) {
+            System.out.println(proveedor);
+        }
+    }
+
 
 
 
