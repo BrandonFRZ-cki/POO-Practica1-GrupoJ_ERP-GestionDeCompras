@@ -4,6 +4,7 @@ import ec.edu.ups.models.Empleado;
 import ec.edu.ups.models.Producto;
 import ec.edu.ups.models.Proveedor;
 import ec.edu.ups.models.SolicitudCompra;
+import ec.edu.ups.views.ShowConsole;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class ListsController {
     private List<Proveedor> proveedores;
     private List<Empleado> empleados;
     private List<SolicitudCompra> solicitudes;
+    ShowConsole showConsole;
 
 
     public ListsController() {
@@ -20,6 +22,7 @@ public class ListsController {
         this.proveedores = new ArrayList<>();
         this.empleados = new ArrayList<>();
         this.solicitudes = new ArrayList<>();
+        showConsole = new ShowConsole();
     }
 
     public List<Producto> getProductos() {
@@ -34,6 +37,14 @@ public class ListsController {
         return empleados;
     }
 
+    public List<SolicitudCompra> getSolicitudes() {
+        return solicitudes;
+    }
+
+    public void setSolicitudes(List<SolicitudCompra> solicitudes) {
+        this.solicitudes = solicitudes;
+    }
+
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
@@ -46,11 +57,16 @@ public class ListsController {
         this.empleados = empleados;
     }
 
-    public List<SolicitudCompra> getSolicitudes() {
-        return solicitudes;
+    public void agregarProveedor(Proveedor proveedor) {
+        proveedores.add(proveedor);
+        showConsole.showMessage(" * Proveedor agregado exitosamente\n* Lista de Proveedores ha Sido Modificada");
+    }
+    public void agregarProducto(Producto producto) {
+        productos.add(producto);
+        showConsole.showMessage(" * Producto agregado exitosamente\n* Lista de Productos ha Sido Modificada");
     }
 
-    public void setSolicitudes(List<SolicitudCompra> solicitudes) {
-        this.solicitudes = solicitudes;
-    }
+
+
+
 }
