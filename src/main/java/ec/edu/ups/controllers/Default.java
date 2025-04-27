@@ -129,6 +129,5 @@ public class Default {
         // Agregar la solicitud de compra al controlador
         listsController.agregarSolicitudCompra(solicitudCompra);
 
-        System.out.println("Solicitud de compra de paquete registrada con éxito.");
     }
 }
