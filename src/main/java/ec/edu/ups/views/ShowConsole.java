@@ -44,6 +44,7 @@ public class ShowConsole {
         return scanner.nextInt();
     }
 
+
     //--------------------------------------------------------- INGRESAR
     public String ingresoId(String mensaje){
         System.out.print("\n\t\tIngrese id del "+mensaje+": ");
@@ -85,6 +86,11 @@ public class ShowConsole {
         System.out.print(mensaje);
         String ingresado = scanner.nextLine();
         return ingresado;
+    }
+    public String showIngreseProductoSinProveedor() {
+        ingresoTexto("A que producto desea registrar el proveedor \n\tIngresa el id del producto : ");
+        String productoElegido = scanner.nextLine();
+        return productoElegido;
     }
 
     //--------------------------------------------------------- LISTAR
