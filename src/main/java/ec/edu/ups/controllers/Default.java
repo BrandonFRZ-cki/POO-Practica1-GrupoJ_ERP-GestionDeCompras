@@ -7,13 +7,13 @@ import ec.edu.ups.models.Proveedor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controller {
+public class Default {
 
     private List <Producto> productos;
     private List <Proveedor> proveedores;
 
 
-    public Controller() {
+    public Default() {
         this.productos = new ArrayList<>();
         this.proveedores = new ArrayList<>();
     }
