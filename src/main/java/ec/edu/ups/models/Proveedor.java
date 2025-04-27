@@ -5,9 +5,10 @@ import java.util.List;
 
 
 public class Proveedor extends Persona {
+
     private String detalleProvedor;
     private List<Producto> productos;
-    private String direccion;
+    private Direccion direccion;
     private String telefono;
 
 
@@ -15,7 +16,7 @@ public class Proveedor extends Persona {
     public Proveedor() {
         this.productos = new ArrayList<>();
     }
-    public Proveedor(String identificacion, String nombre, String apellido, String detalleProvedor,  String direccion, String telefono) {
+    public Proveedor(String identificacion, String nombre, String apellido, String detalleProvedor,  Direccion direccion, String telefono) {
         super(identificacion, nombre, apellido);
         this.detalleProvedor = detalleProvedor;
         this.direccion = direccion;
@@ -40,11 +41,11 @@ public class Proveedor extends Persona {
         this.productos = productos;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 
@@ -56,7 +57,7 @@ public class Proveedor extends Persona {
         this.telefono = telefono;
     }
 
-    public void addProducto(Producto producto){
+    public void addProductoProveedor(Producto producto){
         productos.add(producto);
     }
 
