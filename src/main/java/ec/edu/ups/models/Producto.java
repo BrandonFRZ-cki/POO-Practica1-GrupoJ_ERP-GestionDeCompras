@@ -2,7 +2,7 @@ package ec.edu.ups.models;
 
 import java.util.Objects;
 
-public class Producto {
+public class Producto{
     private String idProducto;
     private String nombre;
     private double precioUnitario;
