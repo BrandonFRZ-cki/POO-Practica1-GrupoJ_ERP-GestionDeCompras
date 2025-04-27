@@ -1,64 +1,49 @@
 package ec.edu.ups.controllers;
 
-import ec.edu.ups.models.Direccion;
-import ec.edu.ups.models.Producto;
-import ec.edu.ups.models.Proveedor;
-
-import java.util.ArrayList;
-import java.util.List;
+import ec.edu.ups.models.*;
 
 public class Default {
 
-    private List <Producto> productos;
-    private List <Proveedor> proveedores;
+    private ListsController listsController;
+    private Gerente gerente;
 
+    public Default() {}
+    public Default(ListsController listsController, Gerente gerente) {
+        this.listsController = listsController;
+        this.gerente = gerente;
+    }
+    public void productosEjemplo() {
+        listsController.getProductos().add(new Producto("pb-251", "Papel bond", 3.5, true));
+        listsController.getProductos().add(new Producto("T554", "Tinta impresora L3250", 12.45, true));
 
-    public Default() {
-        this.productos = new ArrayList<>();
-        this.proveedores = new ArrayList<>();
+        listsController.getProductos().add(new Producto("sku:172", "Curitas 100u", 2.25, false));
+        listsController.getProductos().add(new Producto("sku:WE0001", "Alcohol", 2.75, false));
+        listsController.getProductos().add(new Producto("sku:18U9277", "Gasa 7.5cm x 7.5cm", 3.49, false));
+
+        listsController.getProductos().add(new Producto("IDC:006008", "Teclado Sc744 Negro", 4.42, true));
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public void proveedoresEjemplo() {
+        productosEjemplo();
+        listsController.getProveedores().add(new Proveedor("0302174263001", "Viviana", "Zambrano", "Papeleria",new Direccion("Hurtado de Mensoza", "Reventador", "10-26", "Cuenca", "Azuay", "Ecuador"), "0987654321"));
+        listsController.getProveedores().get(0).addProductoProveedor(listsController.getProductos().get(0));
+        listsController.getProveedores().get(0).addProductoProveedor(listsController.getProductos().get(1));
+
+        listsController.getProveedores().add(new Proveedor("0102366119", "Rodrigo", "Perez", "Farmacia",new Direccion("Av.Mexico", "Guatemala", "S/N", "Cuenca", "Azuay", "Ecuador"), "0912345678"));
+        listsController.getProveedores().get(1).addProductoProveedor(listsController.getProductos().get(2));
+        listsController.getProveedores().get(1).addProductoProveedor(listsController.getProductos().get(3));
+        listsController.getProveedores().get(1).addProductoProveedor(listsController.getProductos().get(4));
+
+        listsController.getProveedores().add(new Proveedor("0302174271", "Luis", "Zambrano", "Tecnologia", new Direccion("La Castellana", "Cartagena", "20-3", "Cuenca", "Azuay", "Ecuador"), "0987654321"));
+        listsController.getProveedores().get(2).addProductoProveedor(listsController.getProductos().get(5));
     }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void empleadoEjemplo() {
+        listsController.getEmpleados().add(new Empleado("0107233710","Brandon","Rivera",Departamento.RECURSOS_HUMANOS));
+        listsController.getEmpleados().add(new Empleado("0101010101","Erick","Yunga",Departamento.FINANCIERO));
+        listsController.getEmpleados().add(new Empleado("0202020202","Pedro","Pesantez",Departamento.MARKETING));
     }
-
-    public List<Proveedor> getProveedores() {
-        return proveedores;
-    }
-
-    public void setProveedores(List<Proveedor> proveedores) {
-        this.proveedores = proveedores;
-    }
-
-    public void agregarProducto(Producto producto) {}
-
-    public void productosEjemplo(){
-        productos.add( new Producto("pb-251","Papel bond",3.5,true ));
-        productos.add( new Producto("T554","Tinta impresora L3250",12.45,true ));
-
-        productos.add( new Producto("sku:172","Curitas 100u",2.25,false ));
-        productos.add( new Producto("sku:WE0001","Alcohol",2.75,false ));
-        productos.add( new Producto("sku:18U9277","Gasa 7.5cm x 7.5cm",3.49,false ));
-
-        productos.add( new Producto("IDC:006008","Teclado Sc744 Negro",4.42,true ));
-    }
-    public void proveedoresEjemplo(){
-        proveedores.add( new Proveedor("0302174263001","Viviana","Zambrano","Papeleria",new Direccion("Hurtado de Mensoza","Reventador","10-26","Cuenca","Azuay","Ecuador"),"0987654321"));
-        proveedores.get(0).addProductoProveedor(productos.get(0));
-        proveedores.get(0).addProductoProveedor(productos.get(1));
-
-        proveedores.add( new Proveedor("0102366119","Rodrigo","Perez","Farmacia",new Direccion("Av.Mexico","Guatemala","S/N","Cuenca","Azuay","Ecuador"),"0912345678"));
-        proveedores.get(1).addProductoProveedor(productos.get(2));
-        proveedores.get(1).addProductoProveedor(productos.get(3));
-        proveedores.get(1).addProductoProveedor(productos.get(4));
-
-        proveedores.add( new Proveedor("0302174271","Luis","Zambrano","Tecnologia",new Direccion("La Castellana","Cartagena","20-3","Cuenca","Azuay","Ecuador"),"0987654321"));
-        proveedores.get(2).addProductoProveedor(productos.get(5));
-
+    public void gerenteEjemplo() {
+        gerente=new Gerente("0103176194","Cecilia","Zambrano",Departamento.DIRECTOR_GENERAL,"123@");
     }
 
 }
