@@ -6,14 +6,14 @@ import ec.edu.ups.views.ShowConsole;
 public class Controller {
     private ShowConsole showConsole;
     private ListsController listsController;
-    public Controller() {
-        showConsole = new ShowConsole();
-        listsController = new ListsController();
+
+    public Controller(ListsController listsController) {
+        this.showConsole = new ShowConsole();
+        this.listsController = listsController;
     }
 
-
     public void start() {
-        int opcion=0;
+        int opcion = 0;
         do{
             opcion=showConsole.showMenu();
             switch (opcion) {
@@ -27,10 +27,10 @@ public class Controller {
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 3. \n\t-------------- Resgistrar Solicitud de Compra");
                     break;
                 case 4:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 4. \n\t-------------- Listar Proveedores");
+                    op4ListarProveedores();
                     break;
                 case 5:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 5. \n\t-------------- Listar Productos");
+                    op5ListarProductos();
                     break;
                 case 6:
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 6. \n\t-------------- Listar Solicitud de compra");
@@ -53,11 +53,13 @@ public class Controller {
             }
         }while(opcion!=11);
     }
+
     public void op1RegistrarProveedor() {
-        showConsole.showMessage("\n---- Ha seleccionado la opcion 1. \n\tResgistrar Proveedor:");
+        showConsole.showMessage("\n---- Ha seleccionado la opción 1. \n\tRegistrar Proveedor:");
     }
+
     public void op2RegistrarProducto() {
-        showConsole.showMessage("\n---- Ha seleccionado la opcion 2. \n\tResgistrar Producto:");
+        showConsole.showMessage("\n---- Ha seleccionado la opción 2. \n\tRegistrar Producto:");
         listsController.agregarProducto(new Producto(
                 showConsole.ingresoId(),
                 showConsole.ingresoNombre(),
@@ -65,5 +67,13 @@ public class Controller {
                 showConsole.ingresoIVA()
         ));
     }
+    public void op4ListarProveedores() {
+        showConsole.showMessage("\n---- Ha seleccionado la opcion 4. \n\tListar Proveedores");
+        showConsole.listarProveedores(listsController.getProveedores());
+    }
 
+    public void op5ListarProductos() {
+        showConsole.showMessage("\n---- Ha seleccionado la opción 5. \n\tListar Productos");
+        showConsole.listarProductos(listsController.getProductos());
+    }
 }
