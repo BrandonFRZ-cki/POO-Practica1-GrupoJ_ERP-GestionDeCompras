@@ -1,6 +1,6 @@
 package ec.edu.ups.models;
 
-public abstract class DetalleCompraProducto extends DetalleCompra implements Calculable {
+public class DetalleCompraProducto extends DetalleCompra implements Calculable {
     private UnidadMedida unidadMedida;
     private Producto producto;
 
@@ -8,8 +8,8 @@ public abstract class DetalleCompraProducto extends DetalleCompra implements Cal
 
     }
 
-    public DetalleCompraProducto(int id, int cantidad, String descricion, Calculable precioCompre, UnidadMedida unidadMedida, Producto producto) {
-        super(id, cantidad, descricion, precioCompre);
+    public DetalleCompraProducto(int id, int cantidad, UnidadMedida unidadMedida, Producto producto) {
+        super(id, cantidad);
         this.unidadMedida = unidadMedida;
         this.producto = producto;
     }
@@ -30,8 +30,10 @@ public abstract class DetalleCompraProducto extends DetalleCompra implements Cal
         this.producto = producto;
     }
 
-
-    public abstract double generarModificacionDeCosto();
+    @Override
+    public double generarModificadorDeCosto(){
+        return 5;
+    };
 
     @Override
     public double calcularCostoTotal(){

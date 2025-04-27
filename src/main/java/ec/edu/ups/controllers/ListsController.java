@@ -57,4 +57,5 @@ public class ListsController {
         solicitudes.add(solicitud);
         showConsole.showMessage("\n\t* Empleado agregado exitosamente\n\t* Solicitud de Compra Modificada");
     }
+
 }

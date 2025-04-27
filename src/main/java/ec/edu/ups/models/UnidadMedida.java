@@ -4,6 +4,8 @@ public enum UnidadMedida {
     METROS,
     LITROS,
     KILOS,
-    MILIMETROS,
-    HORAS;
+    HORAS,
+    UNIDAD,
+    CAJA;
+
 }

@@ -9,20 +9,21 @@ import java.util.Objects;
 
 public class SolicitudCompra implements Calculable {
     private int idSolicitud;
+    private GregorianCalendar fechaCreacion;
     private Empleado solicitante;
     private EstadoSolicitud estado;
     private String motivo;
-    private GregorianCalendar fechaCreacion;
     private String detalleMaterialesSolcitados;
     private String observaciones;
     private List<DetalleCompra> detalle;
-    private Calculable total;
+    private double total;
+
 
     public SolicitudCompra(){
-
+        detalle = new ArrayList<>();
     }
 
-    public SolicitudCompra(int idSolicitud, Empleado solicitante, EstadoSolicitud estado, String motivo, GregorianCalendar fechaCreacion, String detalleMaterialesSolcitados, String observaciones, List<DetalleCompra> detalle, Calculable total) {
+    public SolicitudCompra(int idSolicitud, Empleado solicitante, EstadoSolicitud estado, String motivo, GregorianCalendar fechaCreacion, String detalleMaterialesSolcitados, String observaciones) {
         this.idSolicitud = idSolicitud;
         this.solicitante = solicitante;
         this.estado = estado;
@@ -30,8 +31,7 @@ public class SolicitudCompra implements Calculable {
         this.fechaCreacion = fechaCreacion;
         this.detalleMaterialesSolcitados = detalleMaterialesSolcitados;
         this.observaciones = observaciones;
-        this.detalle = detalle;
-        this.total = total;
+        detalle = new ArrayList<>();
     }
 
     public int getIdSolicitud() {
@@ -98,15 +98,9 @@ public class SolicitudCompra implements Calculable {
         this.detalle = detalle;
     }
 
-    public Calculable getTotal() {
-        return total;
+    public void addDetalle(DetalleCompra detalle){
+        this.detalle.add(detalle);
     }
-
-    public void setTotal(Calculable total) {
-        this.total = total;
-    }
-
-
     public void cambiarEstado(EstadoSolicitud nuevoEstado, Gerente gerente){
 
     }

@@ -2,22 +2,21 @@ package ec.edu.ups.models;
 
 import java.util.Objects;
 
-public abstract class DetalleCompra {
+public abstract class DetalleCompra implements Calculable {
     private int id;
     private int cantidad;
-    private String descripcion;
-    private Calculable precioCompre;
+    private double subTotal;
 
     public DetalleCompra(){
 
     }
 
-    public DetalleCompra(int id, int cantidad, String descripcion, Calculable precioCompre) {
+    public DetalleCompra(int id, int cantidad) {
         this.id = id;
         this.cantidad = cantidad;
-        this.descripcion = descripcion;
-        this.precioCompre = precioCompre;
+
     }
+
 
     public int getId() {
         return id;
@@ -33,22 +32,6 @@ public abstract class DetalleCompra {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public String getDescricion() {
-        return descripcion;
-    }
-
-    public void setDescricion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public Calculable getPrecioCompre() {
-        return precioCompre;
-    }
-
-    public void setPrecioCompre(Calculable precioCompre) {
-        this.precioCompre = precioCompre;
     }
 
     public abstract double generarModificadorDeCosto();
@@ -71,8 +54,7 @@ public abstract class DetalleCompra {
         return "DetalleCompra{" +
                 "id=" + id +
                 ", cantidad=" + cantidad +
-                ", descripcion='" + descripcion + '\'' +
-                ", precioCompre=" + precioCompre +
+                ", subTotal=" + subTotal +
                 '}';
     }
 }
