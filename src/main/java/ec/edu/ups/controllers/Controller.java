@@ -59,21 +59,52 @@ public class Controller {
 
     public void op2RegistrarProducto() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 2. \n\tRegistrar Producto:");
-        listsController.agregarProducto(new Producto(
-                showConsole.ingresoId(),
-                showConsole.ingresoNombre(),
-                showConsole.ingresoPrecio(),
-                showConsole.ingresoIVA(),
-                new Proveedor()
-        ));
+        int opcionCreacionProducto =0;
+        boolean menuCreacionProducto = true;
+        do{
+            opcionCreacionProducto = showConsole.showMenuIngresoProducto();
+            switch (opcionCreacionProducto) {
+                case 1:
+                    listsController.agregarProducto(new Producto(
+                            showConsole.ingresoId("producto"),
+                            showConsole.ingresoNombre("producto"),
+                            showConsole.ingresoPrecio("producto"),
+                            showConsole.ingresoIVA("producto"),
+                            new Proveedor()
+                    ));
+                    menuCreacionProducto = false;
+                    break;
+                case 2:
+                    listsController.agregarProducto(new Producto(
+                            showConsole.ingresoId("producto"),
+                            showConsole.ingresoNombre("producto"),
+                            showConsole.ingresoPrecio("producto"),
+                            showConsole.ingresoIVA("producto"),
+                            new Proveedor(
+                                    showConsole.ingresoId("proveedor"),
+                                    showConsole.ingresoNombre("proveedor"),
+                                    showConsole.ingresoApellido("proveedor"),
+                                    showConsole.ingresoTexto("\t\tDetalle:"),
+                                    showConsole.ingresoDireccion(),
+                                    showConsole.ingresoTexto("\t\tTelefono: ")
+                            )
+                    ));
+                    menuCreacionProducto = false;
+                    break;
+                default:
+                    showConsole.showError("Opcion no valida");
+                    break;
+
+            }
+        }while(menuCreacionProducto);
     }
     public void op4ListarProveedores() {
         showConsole.showMessage("\n---- Ha seleccionado la opcion 4. \n\tListar Proveedores");
-        showConsole.listarProveedores(listsController.getProductos());
+        showConsole.showListaProveedores(listsController.getProductos());
     }
 
     public void op5ListarProductos() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 5. \n\tListar Productos");
-        showConsole.listarProductos(listsController.getProductos());
+        showConsole.showListaProductos(listsController.getProductos());
     }
 }

@@ -2,7 +2,6 @@ package ec.edu.ups.views;
 
 import ec.edu.ups.models.Direccion;
 import ec.edu.ups.models.Producto;
-import ec.edu.ups.models.Proveedor;
 
 import java.util.List;
 import java.util.Scanner;
@@ -36,42 +35,69 @@ public class ShowConsole {
         System.out.print("Opcion: ");
         return scanner.nextInt();
     }
+    public int showMenuIngresoProducto() {
+        System.out.println("-------------- MENU CREACION DE PRODUCTOS ---------------");
+        System.out.println("1.  Desea Crear Solo El Producto");
+        System.out.println("2.  Producto con proveedor");
+        System.out.println("---------------------------------------------------------");
+        System.out.print("Opcion: ");
+        return scanner.nextInt();
+    }
 
     //--------------------------------------------------------- INGRESAR
-    public String ingresoId(){
-        System.out.print("\n\t\tIngrese id : ");
+    public String ingresoId(String mensaje){
+        System.out.print("\n\t\tIngrese id del "+mensaje+": ");
         String id = scanner.next();
         scanner.nextLine();
         return id;
     }
-    public String ingresoNombre(){
-        System.out.print("\n\t\tIngrese el nombre: ");
+    public String ingresoNombre(String mensaje){
+        System.out.print("\n\t\tIngrese el nombre del "+mensaje+": ");
         String nombre = scanner.nextLine();
         return nombre;
     }
-    public String ingresoApellido(){
-        System.out.print("\n\t\tIngrese apellido: ");
+    public String ingresoApellido(String mensaje){
+        System.out.print("\n\t\tIngrese apellido del "+mensaje+": ");
         String apellido = scanner.nextLine();
         return apellido;
     }
-    public double ingresoPrecio(){
-        System.out.print("\n\t\tIngrese el precio (con coma , ): ");
+    public double ingresoPrecio(String mensaje){
+        System.out.print("\n\t\tIngrese el precio del "+mensaje+" (con coma , ) : ");
         double precio = scanner.nextDouble();
         return precio;
     }
-    public boolean ingresoIVA(){
-        System.out.print("\n\t\tTiene IVA? Si/NO: ");
+    public boolean ingresoIVA(String mensaje){
+        System.out.print("\n\t\tEl "+mensaje+" tiene IVA? Si/NO: ");
         return scanner.next().equalsIgnoreCase("Si");
     }
+    public Direccion ingresoDireccion(){
+        System.out.println("\n\t\tDireccion- --  ");
+        return new Direccion(
+                ingresoTexto("\n\t\t\tCalle Principal  : "),
+                ingresoTexto("\n\t\t\tCalle Segundaria : "),
+                ingresoTexto("\n\t\t\tNumeracion       : "),
+                ingresoTexto("\n\t\t\tCiudad           : "),
+                ingresoTexto("\n\t\t\tProvincia        : "),
+                ingresoTexto("\n\t\t\tPais             : ")
+        );
+    }
+    public String ingresoTexto(String mensaje){
+        System.out.print(mensaje);
+        String ingresado = scanner.nextLine();
+        return ingresado;
+    }
+
     //--------------------------------------------------------- LISTAR
-    public void listarProductos( List<Producto> productos) {
+    public void showListaProductos(List<Producto> productos) {
         for (Producto producto : productos) {
             System.out.println(producto);
         }
     }
-    public void listarProveedores( List<Producto> productos) {
-        for (Producto producto : productos) {
-            System.out.println(producto.getProveedor());
+    public void showListaProveedores(List<Producto> productos) {
+        for (int i = 0; i < productos.size(); i++) {
+            if (i == productos.size() - 1 || !productos.get(i).getProveedor().equals(productos.get(i + 1).getProveedor())) {
+                System.out.println(productos.get(i).getProveedor());
+            }
         }
     }
 
