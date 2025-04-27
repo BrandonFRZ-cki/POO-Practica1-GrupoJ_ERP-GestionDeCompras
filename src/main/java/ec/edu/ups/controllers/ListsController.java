@@ -49,10 +49,12 @@ public class ListsController {
         productos.add(producto);
         showConsole.showMessage("\n\t* Producto agregado exitosamente\n\t* Lista de Productos Modificada");
     }
-
     public void agregarEmpleado(Empleado empleado) {
         empleados.add(empleado);
         showConsole.showMessage("\n\t* Empleado agregado exitosamente\n\t* Lista de Empleados Modificada");
     }
-
+    public void agregarSolicitudCompra(SolicitudCompra solicitud){
+        solicitudes.add(solicitud);
+        showConsole.showMessage("\n\t* Empleado agregado exitosamente\n\t* Solicitud de Compra Modificada");
+    }
 }

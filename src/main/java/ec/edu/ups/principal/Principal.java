@@ -12,5 +12,6 @@ public class Principal {
 
         Controller controller = new Controller(ejemplo.getListsController());
         controller.start();
+
     }
 }

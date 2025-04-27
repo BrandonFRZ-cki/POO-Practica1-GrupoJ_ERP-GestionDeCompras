@@ -1,7 +1,6 @@
 package ec.edu.ups.controllers;
 
-import ec.edu.ups.models.Producto;
-import ec.edu.ups.models.Proveedor;
+import ec.edu.ups.models.*;
 import ec.edu.ups.views.ShowConsole;
 
 public class Controller {
@@ -123,10 +122,12 @@ public class Controller {
             }
         }while(menuCreacionProducto);
     }
+
     public void op4ListarProveedores() {
         showConsole.showMessage("\n---- Ha seleccionado la opcion 4. \n\tListar Proveedores");
         showConsole.showListaProveedores(listsController.getProductos());
     }
+
 
     public void op5ListarProductos() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 5. \n\tListar Productos");

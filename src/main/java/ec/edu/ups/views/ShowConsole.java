@@ -2,6 +2,7 @@ package ec.edu.ups.views;
 
 import ec.edu.ups.models.Direccion;
 import ec.edu.ups.models.Producto;
+import ec.edu.ups.models.SolicitudCompra;
 
 import java.util.List;
 import java.util.Scanner;
@@ -106,9 +107,10 @@ public class ShowConsole {
             }
         }
     }
-
-
-
-
+    public void showListaSolicitudes(List<SolicitudCompra> solicitudes) {
+        for (SolicitudCompra solicitud : solicitudes) {
+            System.out.println(solicitud);
+        }
+    }
 
 }
