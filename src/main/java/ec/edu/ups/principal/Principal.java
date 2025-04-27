@@ -7,7 +7,6 @@ public class Principal {
     public static void main(String[] args) {
         Default ejemplo = new Default();
         ejemplo.productosEjemplo();
-        ejemplo.proveedoresEjemplo();
         ejemplo.empleadoEjemplo();
         ejemplo.gerenteEjemplo();
 
