@@ -106,13 +106,6 @@ public class SolicitudCompra implements Calculable {
         this.total = total;
     }
 
-    ListsController controller = new ListsController();
-    Empleado empleado = new Empleado();
-    List<DetalleCompra> detalleCompras = new ArrayList<>();
-    SolicitudCompra solicitud = new SolicitudCompra(1,empleado, EstadoSolicitud.EN_REVISION,"Compra de suministos"
-            ,new GregorianCalendar(),"material de Oficina","Prioritario",detalle,null);
-
-
 
     public void cambiarEstado(EstadoSolicitud nuevoEstado, Gerente gerente){
 
