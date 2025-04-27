@@ -1,6 +1,7 @@
 package ec.edu.ups.controllers;
 
 import ec.edu.ups.models.Producto;
+import ec.edu.ups.models.Proveedor;
 import ec.edu.ups.views.ShowConsole;
 
 public class Controller {
@@ -15,10 +16,10 @@ public class Controller {
     public void start() {
         int opcion = 0;
         do{
-            opcion=showConsole.showMenu();
+            opcion=showConsole.showMenuPrincipal();
             switch (opcion) {
                 case 1:
-                    op1RegistrarProveedor();
+
                     break;
                 case 2:
                     op2RegistrarProducto();
@@ -54,9 +55,7 @@ public class Controller {
         }while(opcion!=11);
     }
 
-    public void op1RegistrarProveedor() {
-        showConsole.showMessage("\n---- Ha seleccionado la opción 1. \n\tRegistrar Proveedor:");
-    }
+
 
     public void op2RegistrarProducto() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 2. \n\tRegistrar Producto:");
@@ -64,12 +63,13 @@ public class Controller {
                 showConsole.ingresoId(),
                 showConsole.ingresoNombre(),
                 showConsole.ingresoPrecio(),
-                showConsole.ingresoIVA()
+                showConsole.ingresoIVA(),
+                new Proveedor()
         ));
     }
     public void op4ListarProveedores() {
         showConsole.showMessage("\n---- Ha seleccionado la opcion 4. \n\tListar Proveedores");
-        showConsole.listarProveedores(listsController.getProveedores());
+        showConsole.listarProveedores(listsController.getProductos());
     }
 
     public void op5ListarProductos() {

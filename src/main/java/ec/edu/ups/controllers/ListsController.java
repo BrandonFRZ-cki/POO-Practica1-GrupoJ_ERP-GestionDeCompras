@@ -2,7 +2,6 @@ package ec.edu.ups.controllers;
 
 import ec.edu.ups.models.Empleado;
 import ec.edu.ups.models.Producto;
-import ec.edu.ups.models.Proveedor;
 import ec.edu.ups.models.SolicitudCompra;
 import ec.edu.ups.views.ShowConsole;
 
@@ -11,26 +10,19 @@ import java.util.List;
 
 public class ListsController {
     private List<Producto> productos;
-    private List<Proveedor> proveedores;
     private List<Empleado> empleados;
     private List<SolicitudCompra> solicitudes;
-    ShowConsole showConsole;
-
+    private ShowConsole showConsole;
 
     public ListsController() {
         this.productos = new ArrayList<>();
-        this.proveedores = new ArrayList<>();
         this.empleados = new ArrayList<>();
         this.solicitudes = new ArrayList<>();
-        showConsole = new ShowConsole();
+        this.showConsole = new ShowConsole();
     }
 
     public List<Producto> getProductos() {
         return productos;
-    }
-
-    public List<Proveedor> getProveedores() {
-        return proveedores;
     }
 
     public List<Empleado> getEmpleados() {
@@ -49,28 +41,18 @@ public class ListsController {
         this.productos = productos;
     }
 
-    public void setProveedores(List<Proveedor> proveedores) {
-        this.proveedores = proveedores;
-    }
-
     public void setEmpleados(List<Empleado> empleados) {
         this.empleados = empleados;
     }
 
-    public void agregarProveedor(Proveedor proveedor) {
-        proveedores.add(proveedor);
-        showConsole.showMessage("\n\t* Proveedor agregado exitosamente\n\t* Lista de Proveedores Modificada");
-    }
     public void agregarProducto(Producto producto) {
         productos.add(producto);
         showConsole.showMessage("\n\t* Producto agregado exitosamente\n\t* Lista de Productos Modificada");
     }
+
     public void agregarEmpleado(Empleado empleado) {
         empleados.add(empleado);
         showConsole.showMessage("\n\t* Empleado agregado exitosamente\n\t* Lista de Empleados Modificada");
     }
-
-
-
 
 }

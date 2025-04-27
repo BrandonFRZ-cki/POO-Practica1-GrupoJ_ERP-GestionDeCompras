@@ -7,16 +7,14 @@ public class Producto {
     private String nombre;
     private double precioUnitario;
     private boolean aplicaIVA;
+    private Proveedor proveedor;
 
-
-    public Producto(){
-    }
-
-    public Producto(String idProducto, String nombre, double precioUnitario, boolean aplicaIVA) {
+    public Producto(String idProducto, String nombre, double precioUnitario, boolean aplicaIVA, Proveedor proveedor) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
         this.aplicaIVA = aplicaIVA;
+        this.proveedor = proveedor;
     }
 
     public String getIdProducto() {
@@ -51,6 +49,14 @@ public class Producto {
         this.aplicaIVA = aplicaIVA;
     }
 
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -70,6 +76,7 @@ public class Producto {
                 ", nombre='" + nombre + '\'' +
                 ", precioUnitario=" + precioUnitario +
                 ", aplicaIVA=" + aplicaIVA +
+                ", proveedor=" + proveedor +
                 '}';
     }
 }

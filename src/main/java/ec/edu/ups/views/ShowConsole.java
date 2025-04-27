@@ -1,5 +1,6 @@
 package ec.edu.ups.views;
 
+import ec.edu.ups.models.Direccion;
 import ec.edu.ups.models.Producto;
 import ec.edu.ups.models.Proveedor;
 
@@ -8,10 +9,16 @@ import java.util.Scanner;
 
 public class ShowConsole {
     Scanner scanner = new Scanner(System.in);
+    //--------------------------------------------------------- MENSAJES
     public void showMessage(String mensaje) {
         System.out.println(mensaje);
     }
-    public int showMenu() {
+    public void showError(String mensaje) {
+        System.err.println("ERROR: "+mensaje);
+    }
+
+    //--------------------------------------------------------- MENUS
+    public int showMenuPrincipal() {
         System.out.println("\n======= SISTEMA DE GESTIÓN DE COMPRAS =======");
         System.out.println("-------------- MENU PRINCIPAL ---------------");
         System.out.println("1.  Resgistrar Proveedor");
@@ -29,6 +36,8 @@ public class ShowConsole {
         System.out.print("Opcion: ");
         return scanner.nextInt();
     }
+
+    //--------------------------------------------------------- INGRESAR
     public String ingresoId(){
         System.out.print("\n\t\tIngrese id : ");
         String id = scanner.next();
@@ -54,16 +63,18 @@ public class ShowConsole {
         System.out.print("\n\t\tTiene IVA? Si/NO: ");
         return scanner.next().equalsIgnoreCase("Si");
     }
+    //--------------------------------------------------------- LISTAR
     public void listarProductos( List<Producto> productos) {
         for (Producto producto : productos) {
             System.out.println(producto);
         }
     }
-    public void listarProveedores( List<Proveedor> proveedores) {
-        for (Proveedor proveedor : proveedores) {
-            System.out.println(proveedor);
+    public void listarProveedores( List<Producto> productos) {
+        for (Producto producto : productos) {
+            System.out.println(producto.getProveedor());
         }
     }
+
 
 
 
