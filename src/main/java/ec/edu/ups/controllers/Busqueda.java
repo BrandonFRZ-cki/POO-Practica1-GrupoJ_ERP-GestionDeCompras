@@ -15,8 +15,8 @@ public class Busqueda {
         return null;
     }
     public Producto productoPorNombre(List<Producto> productos, String nombre){
-        for (Producto producto : productos) {
-            if (producto.getNombre().equalsIgnoreCase(nombre)){
+        for (Producto producto : productos){
+            if(producto.getNombre().equalsIgnoreCase(nombre)){
                 return producto;
             }
         }

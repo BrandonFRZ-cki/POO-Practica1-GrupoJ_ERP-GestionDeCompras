@@ -43,7 +43,7 @@ public class Controller {
                    op7BuscarProveedorId();
                     break;
                 case 8:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 8. \n\t-------------- Buscar Producto por nombre");
+                    op8BuscarPorNombre();
                     break;
                 case 9:
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 9. \n\t-------------- Buscar Solicitud por numero");
@@ -229,4 +229,14 @@ public class Controller {
 
     }
 
+    public void op8BuscarPorNombre(){
+        showConsole.showMessage("\n---- Ha seleccionado la opcion 8. \n\t-------------- Buscar Producto por nombre ");
+        String nombre = showConsole.ingresoTexto2("Producto a buscar: ");
+        Producto productoEn = busqueda.productoPorNombre(listsController.getProductos(),nombre);
+        if (productoEn == null){
+            showConsole.showError("No se ha encontrado el producto");
+        }else {
+            System.out.println(productoEn);
+        }
+    }
 }
