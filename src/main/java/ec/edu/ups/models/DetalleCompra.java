@@ -51,10 +51,8 @@ public abstract class DetalleCompra implements Calculable {
 
     @Override
     public String toString() {
-        return "DetalleCompra{" +
-                "id=" + id +
-                ", cantidad=" + cantidad +
-                ", subTotal=" + subTotal +
-                '}';
+        return  "\n\t | n# : " + id +
+                " | Cantidad : " + cantidad +
+                " | subTotal=" + subTotal;
     }
 }

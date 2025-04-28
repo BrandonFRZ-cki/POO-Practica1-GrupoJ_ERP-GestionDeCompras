@@ -43,9 +43,8 @@ public class DetalleCompraProducto extends DetalleCompra implements Calculable {
 
     @Override
     public String toString() {
-        return "DetalleCompraProducto{" +
-                "unidadMedida=" + unidadMedida +
-                ", producto=" + producto +
-                '}';
+        return  super.toString()+
+                "| " + unidadMedida +
+                " | \n\t" + producto ;
     }
 }

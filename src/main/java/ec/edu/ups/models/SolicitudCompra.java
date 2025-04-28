@@ -2,6 +2,7 @@ package ec.edu.ups.models;
 
 import ec.edu.ups.controllers.ListsController;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -124,16 +125,22 @@ public class SolicitudCompra implements Calculable {
 
     @Override
     public String toString() {
-        return "SolicitudCompra{" +
-                "idSolicitud=" + idSolicitud +
-                ", solicitante=" + solicitante +
-                ", estado=" + estado +
-                ", motivo='" + motivo + '\'' +
-                ", fechaCreacion=" + fechaCreacion +
-                ", detalleMaterialesSolcitados='" + detalleMaterialesSolcitados + '\'' +
-                ", observaciones='" + observaciones + '\'' +
-                ", detalle=" + detalle +
-                ", total=" + total +
-                '}';
+        return    "\n=================== Solicitud de Compra ======================" +
+                "\n\t = Fecha-----------------: " + (fechaCreacion != null ? new SimpleDateFormat("dd/MM/yyyy").format(fechaCreacion.getTime()) : "null") +
+                "\n\t = Numero de Solicitud---: " + idSolicitud +
+                "\n\t = Solicitante-----------: " + solicitante +
+                "\n\t = Estado----------------: " + estado +
+                "\n\t-------------------------------------------------------------"+
+                "\n\t - Motivo  : " + motivo +
+                "\n\t - Detalle : " + detalleMaterialesSolcitados +
+                "\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+
+                "\n\t " + detalle +
+                "\n\t-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+
+                "\n\t observaciones : " + observaciones+
+                "\n\t-------------------------------------------------------------"+
+                "\n\t Total=" + total+
+                "\n\t-------------------------------------------------------------"
+        ;
+
     }
 }

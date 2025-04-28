@@ -58,9 +58,9 @@ public class DetalleCompraPaquete extends DetalleCompra implements Calculable{
 
     @Override
     public String toString() {
-        return "DetalleCompraPaquete{" +
-                "descuento=" + descuento +
-                ", productos=" + productos +
-                '}';
+        return "⨷ PAQUETE:"+
+                super.toString() +
+                "| Descuento " + descuento +
+                " % |\n Lista de Productos en el paquete : \n" + productos ;
     }
 }
