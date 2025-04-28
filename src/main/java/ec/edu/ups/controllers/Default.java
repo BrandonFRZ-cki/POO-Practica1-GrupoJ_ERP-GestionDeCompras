@@ -211,7 +211,7 @@ public class Default {
         ));
         listsController.agregarSolicitudCompra(solicitudTintas);
 
-        DetalleCompraPaquete paqueteBotiquin = new DetalleCompraPaquete(5, 1, 0.23);
+        DetalleCompraPaquete paqueteBotiquin = new DetalleCompraPaquete(5, 1, 23);
         paqueteBotiquin.addProducto(listsController.getProductos().get(3)); // Alcohol
         paqueteBotiquin.addProducto(listsController.getProductos().get(4)); // Gasa 7.5cm x 7.5cm
         paqueteBotiquin.addProducto(listsController.getProductos().get(2)); // Curitas
