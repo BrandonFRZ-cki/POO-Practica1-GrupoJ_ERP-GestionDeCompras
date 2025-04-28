@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class DetalleCompraPaquete extends DetalleCompra implements Calculable{
+public class DetalleCompraPaquete extends DetalleCompra implements Calculable{
     private List<Producto> productos;
     private double descuento;
 
@@ -12,7 +12,7 @@ public abstract class DetalleCompraPaquete extends DetalleCompra implements Calc
         this.productos = new ArrayList<>();
     }
 
-    public DetalleCompraPaquete(int id, int cantidad, String descricion, Calculable precioCompre, double descuento) {
+    public DetalleCompraPaquete(int id, int cantidad, double descuento) {
         super(id, cantidad);
         this.descuento = descuento;
 
@@ -41,12 +41,18 @@ public abstract class DetalleCompraPaquete extends DetalleCompra implements Calc
     }
 
 
-    public abstract double generarModificacionDeCosto();
+    public double generarModificacionDeCosto() {
+        return 0;
+    }
 
     @Override
     public double calcularCostoTotal(){
         return 0;
     }
+    @Override
+    public double generarModificadorDeCosto(){
+        return 5;
+    };
 
 
 
