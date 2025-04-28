@@ -46,7 +46,7 @@ public class Controller {
                     op8BuscarPorNombre();
                     break;
                 case 9:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 9. \n\t-------------- Buscar Solicitud por numero");
+                   op9BuscarPorNumero();
                     break;
                 case 10:
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 10. \n\t-------------- Aprobar / Rechazar Solicitud de compra");
@@ -239,4 +239,17 @@ public class Controller {
             System.out.println(productoEn);
         }
     }
+
+    public void op9BuscarPorNumero(){
+        showConsole.showMessage("\n---- Ha seleccionado la opcion 9. \n\t-------------- Buscar Solicitud por numero");
+        int numero = showConsole.ingresoNumero("Ingrese numero a buscar");
+        SolicitudCompra solicitudEncon = busqueda.solicitudPorNumero(listsController.getSolicitudes(),numero);
+        if (solicitudEncon == null){
+            showConsole.showError("No se ha encontrado la solicitud con ese numero");
+        }else {
+            System.out.println(solicitudEncon);
+        }
+    }
+
+
 }
