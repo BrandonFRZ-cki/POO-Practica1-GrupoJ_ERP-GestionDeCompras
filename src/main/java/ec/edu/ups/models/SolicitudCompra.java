@@ -109,9 +109,7 @@ public class SolicitudCompra implements Calculable {
         this.detalles.add(detalle);
     }
 
-    public void cambiarEstado(EstadoSolicitud nuevoEstado, Gerente gerente){
 
-    }
 
 
     @Override

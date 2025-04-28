@@ -28,7 +28,7 @@ public class ShowConsole {
         System.out.println("7.  Buscar Proveedor por ID");
         System.out.println("8.  Buscar Producto por nombre");
         System.out.println("9.  Buscar Solicitud por numero");
-        System.out.println("10. Aprobar / Recuperar Solicitud de compra");
+        System.out.println("10. Aprobar / Rechazar Solicitud de compra");
         System.out.println("11. Salir");
         System.out.println("--------------------------------------------");
         System.out.print("Opcion: ");
@@ -84,6 +84,10 @@ public class ShowConsole {
         System.out.print("\n\t\tIngrese el precio del "+mensaje+" (con coma , ) : ");
         double precio = scanner.nextDouble();
         return precio;
+    }
+    public String ingresoPssw(){
+        System.out.println("Ingrese contrasena");
+        return scanner.next();
     }
     public boolean ingresoIVA(String mensaje){
         System.out.print("\n\t\tEl "+mensaje+" tiene IVA? Si/NO: ");

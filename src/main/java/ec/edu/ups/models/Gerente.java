@@ -1,35 +1,29 @@
 package ec.edu.ups.models;
 
 public class Gerente extends Empleado {
-    private String contrasena;
+    private String pssw;
 
     public Gerente() {
 
     }
 
-    public Gerente(String identificacion, String nombre, String apellido, Departamento departameto, String contrasena) {
+    public Gerente(String identificacion, String nombre, String apellido, Departamento departameto, String pssw) {
         super(identificacion, nombre, apellido, departameto);
-        this.contrasena = contrasena;
+        this.pssw = pssw;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPssw() {
+        return pssw;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setPssw(String pssw) {
+        this.pssw = pssw;
     }
-
-
-    public boolean aprobar (String intentoContrasena){
-        return false;
-    }
-
 
     @Override
     public String toString() {
         return "Gerente{" +
-                "contrasena='" + contrasena + '\'' +
+                "pssw='" + pssw + '\'' +
                 '}';
     }
 }
