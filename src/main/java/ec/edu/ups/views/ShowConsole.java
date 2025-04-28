@@ -109,8 +109,10 @@ public class ShowConsole {
     }
     public void showListaSolicitudes(List<SolicitudCompra> solicitudes) {
         for (SolicitudCompra solicitud : solicitudes) {
+            solicitud.setTotal(solicitud.calcularCostoTotal());
             System.out.println(solicitud);
         }
     }
+
 
 }

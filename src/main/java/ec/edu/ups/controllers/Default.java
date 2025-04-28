@@ -55,7 +55,7 @@ public class Default {
                 new Producto(
                         "sku:172",
                         "Curita",
-                        0.30,
+                        1.43,
                         false,
                         new Proveedor(
                                 "0102366119",
@@ -156,7 +156,7 @@ public class Default {
         solicitud2.addDetalle(new DetalleCompraProducto(
                 1,
                 10,
-                UnidadMedida.UNIDAD,
+                UnidadMedida.CAJA,
                 listsController.getProductos().get(2)
         ));
         solicitud2.addDetalle(new DetalleCompraProducto(
@@ -203,12 +203,6 @@ public class Default {
                 "Me parece mejor comprar las 4"
         );
         solicitudTintas.addDetalle(paqueteTintas);
-        solicitudTintas.addDetalle(new DetalleCompraProducto(
-                1,
-                3,
-                UnidadMedida.CAJA,
-                listsController.getProductos().get(0)
-        ));
         listsController.agregarSolicitudCompra(solicitudTintas);
 
         DetalleCompraPaquete paqueteBotiquin = new DetalleCompraPaquete(5, 1, 23);

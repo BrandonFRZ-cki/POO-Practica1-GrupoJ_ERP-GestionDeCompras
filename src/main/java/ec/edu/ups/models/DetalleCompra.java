@@ -5,7 +5,6 @@ import java.util.Objects;
 public abstract class DetalleCompra implements Calculable {
     private int id;
     private int cantidad;
-    private double subTotal;
 
     public DetalleCompra(){
 
@@ -53,6 +52,6 @@ public abstract class DetalleCompra implements Calculable {
     public String toString() {
         return  "\n\t | n# : " + id +
                 " | Cantidad : " + cantidad +
-                " | subTotal=" + subTotal;
+                " | ";
     }
 }
