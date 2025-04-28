@@ -35,14 +35,8 @@ public class DetalleCompraPaquete extends DetalleCompra implements Calculable{
         this.productos = productos;
     }
 
-
     public void addProducto(Producto producto){
         productos.add(producto);
-    }
-
-
-    public double generarModificacionDeCosto() {
-        return 0;
     }
 
     @Override

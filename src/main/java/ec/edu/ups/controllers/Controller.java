@@ -4,6 +4,7 @@ import ec.edu.ups.models.*;
 import ec.edu.ups.views.ShowConsole;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class Controller {
     private ShowConsole showConsole;
@@ -36,7 +37,6 @@ public class Controller {
                     op5ListarProductos();
                     break;
                 case 6:
-
                     op6ListarSolicitudes();
                     break;
                 case 7:
@@ -130,9 +130,13 @@ public class Controller {
 
     public void op3RegistrarSolicitud() {
         showConsole.showMessage("\n---- Ha seleccionado la opción 3. \n\tRegistrar Solicitud");
+
         int opcionSolicitud = showConsole.showMenuIngresoSolicitud();
+
         if(opcionSolicitud==1){
+
             int nuevoId = listsController.getSolicitudes().size() + 1;
+
             Empleado empleadoSeleccionado=null;
 
             showConsole.showMessage("-------- QUIEN ERES");
@@ -154,51 +158,86 @@ public class Controller {
                                 showConsole.ingresoNumero("\n\t\tMes: ")-1,
                                 showConsole.ingresoNumero("\n\t\tDia:")
                         ),
-                        showConsole.ingresoTexto("--- Detalles del Material : "),
-                        showConsole.ingresoTexto("--- Observaciones :")
+                        showConsole.ingresoTexto2("--- Detalle del Material : "),
+                        showConsole.ingresoTexto2("--- Observacion :")
                 );
+
+                boolean agregarOtroDetalle=true;
                 boolean agregarOtroProducto = true;
                 int contadorDetalle = 1;
-                do {
-                    Producto productoSeleccionado=null;
-                    do {
-                        System.out.println("Seleccione un producto para agregar a la solicitud:");
-                        for (int i = 0; i < listsController.getProductos().size(); i++) {
-                            System.out.println("ID: "+listsController.getProductos().get(i).getIdProducto()+" Nombre:"+listsController.getProductos().get(i).getNombre());
-                        }
+                while(agregarOtroDetalle){
+                    int tipoDetalle = showConsole.showMenuTipoDetalle();
+                    if(tipoDetalle==1){//Producto
 
-                        String idProd = showConsole.ingresoId("producto que quiere agregar ");
-                        for (int i = 0; i < listsController.getProductos().size(); i++) {
-                            if(listsController.getProductos().get(i).getIdProducto().equals(idProd)){
-                                productoSeleccionado = listsController.getProductos().get(i);
+                        Producto productoSeleccionado=null;
+                        do {
+                            System.out.println("Seleccione un producto para agregar a la solicitud:");
+                            for (int i = 0; i < listsController.getProductos().size(); i++) {
+                                System.out.println("ID: "+listsController.getProductos().get(i).getIdProducto()+" Nombre:"+listsController.getProductos().get(i).getNombre());
                             }
-                        }
-                        if(productoSeleccionado==null){
-                            showConsole.showError("El producto no existe");
-                        }
-                    }while(productoSeleccionado==null);
 
-                    DetalleCompraProducto detalle = new DetalleCompraProducto(
-                            contadorDetalle++,
-                            showConsole.ingresoNumero("\n\t\tCantidad : "),
-                            showConsole.ingresoUnidadMedida(),
-                            productoSeleccionado
-                    );
+                            String idProd = showConsole.ingresoId("producto que quiere agregar ");
+                            for (int i = 0; i < listsController.getProductos().size(); i++) {
+                                if(listsController.getProductos().get(i).getIdProducto().equals(idProd)){
+                                    productoSeleccionado = listsController.getProductos().get(i);
+                                }
+                            }
+                            if(productoSeleccionado==null){
+                                showConsole.showError("El producto no existe");
+                            }
+                        }while(productoSeleccionado==null);
 
-                    solicitud.addDetalle(detalle);
-                    agregarOtroProducto = showConsole.ingresoTexto2("¿Desea agregar otro producto? (SI/NO): ").equalsIgnoreCase("si");
+                        DetalleCompraProducto detalle = new DetalleCompraProducto(
+                                contadorDetalle++,
+                                showConsole.ingresoNumero("\n\t\tCantidad : "),
+                                showConsole.ingresoUnidadMedida(),
+                                productoSeleccionado
+                        );
 
-                } while (agregarOtroProducto);
+                        solicitud.addDetalle(detalle);
 
+                    } else if (tipoDetalle==2){//Pak
+                        agregarOtroProducto = true;
+                        List<Producto> productosSeleccionados = listsController.getProductos();
+                        do {
+                            Producto productoSeleccionado=null;
+
+                            do {
+                                System.out.println("Seleccione un producto para agregar a la solicitud:");
+                                for (int i = 0; i < listsController.getProductos().size(); i++) {
+                                    System.out.println("ID: "+listsController.getProductos().get(i).getIdProducto()+" Nombre:"+listsController.getProductos().get(i).getNombre());
+                                }
+                                String idProd = showConsole.ingresoId("producto que quiere agregar ");
+                                for (int i = 0; i < listsController.getProductos().size(); i++) {
+                                    if(listsController.getProductos().get(i).getIdProducto().equals(idProd)){
+                                        productoSeleccionado = listsController.getProductos().get(i);
+                                    }
+                                }
+                                if(productoSeleccionado==null){
+                                    showConsole.showError("El producto no existe");
+                                }
+                            }while(productoSeleccionado==null);
+                            productosSeleccionados.add(productoSeleccionado);
+                            agregarOtroProducto = showConsole.ingresoTexto2("¿Desea agregar otro producto? (SI/NO): ").equalsIgnoreCase("si");
+                        } while (agregarOtroProducto);
+
+                        DetalleCompraPaquete detalle = new DetalleCompraPaquete(
+                                contadorDetalle++,
+                                showConsole.ingresoNumero("\n\t\tCantidad : "),
+                                showConsole.ingresoNumero2("\n\t\tDescuento :")
+                        );
+                        detalle.setProductos(productosSeleccionados);
+                        solicitud.addDetalle(detalle);
+                    }
+                    agregarOtroDetalle= showConsole.ingresoTexto2("¿Desea agregar otro detalle? (SI/NO): ").equalsIgnoreCase("si");
+                };
                 listsController.agregarSolicitudCompra(solicitud);
-
             }
             else{
                 showConsole.showError("Usted no es parte de la empresa");
             }
         }
     }
-
 
     public void op4ListarProveedores() {
         showConsole.showMessage("\n---- Ha seleccionado la opcion 4. \n\tListar Proveedores");

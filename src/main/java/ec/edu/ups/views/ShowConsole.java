@@ -51,6 +51,14 @@ public class ShowConsole {
         System.out.print("Opcion: ");
         return scanner.nextInt();
     }
+    public int showMenuTipoDetalle(){
+        System.out.println("------- TIPO DE DETALLE DE SOLICITUD --------");
+        System.out.println("1. Producto");
+        System.out.println("2. Paquete");
+        System.out.println("---------------------------------------------");
+        System.out.print("Opcion: ");
+        return scanner.nextInt();
+    }
 
 
 
@@ -111,7 +119,11 @@ public class ShowConsole {
         System.out.print(mensaje);
         int ingresado = scanner.nextInt();
         return ingresado;
-
+    }
+    public double ingresoNumero2(String mensaje){
+        System.out.print(mensaje);
+        double ingresado = scanner.nextDouble();
+        return ingresado;
     }
     public UnidadMedida ingresoUnidadMedida(){
         System.out.println("Seleccione la unidad de medida:");
