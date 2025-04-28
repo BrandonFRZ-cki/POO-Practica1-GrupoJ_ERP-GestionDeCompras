@@ -46,13 +46,20 @@ public class DetalleCompraPaquete extends DetalleCompra implements Calculable{
     }
 
     @Override
-    public double calcularCostoTotal(){
-        return 0;
+    public double generarModificadorDeCosto() {
+        return descuento / 100;
     }
+
     @Override
-    public double generarModificadorDeCosto(){
-        return 5;
-    };
+    public double calcularCostoTotal() {
+        double sumaPreciosProductos = 0;
+        for (Producto producto : productos) {
+            sumaPreciosProductos += producto.getPrecioUnitario();
+        }
+        double costoTotal = sumaPreciosProductos * generarModificadorDeCosto() * getCantidad();
+        return costoTotal;
+    }
+
 
 
 

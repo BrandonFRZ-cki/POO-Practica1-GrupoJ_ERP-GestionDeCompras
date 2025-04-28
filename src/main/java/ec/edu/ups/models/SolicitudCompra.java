@@ -1,7 +1,5 @@
 package ec.edu.ups.models;
 
-import ec.edu.ups.controllers.ListsController;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -16,12 +14,12 @@ public class SolicitudCompra implements Calculable {
     private String motivo;
     private String detalleMaterialesSolcitados;
     private String observaciones;
-    private List<DetalleCompra> detalle;
+    private List<DetalleCompra> detalles;
     private double total;
 
 
     public SolicitudCompra(){
-        detalle = new ArrayList<>();
+        detalles = new ArrayList<>();
     }
 
     public SolicitudCompra(int idSolicitud, Empleado solicitante, EstadoSolicitud estado, String motivo, GregorianCalendar fechaCreacion, String detalleMaterialesSolcitados, String observaciones) {
@@ -32,7 +30,7 @@ public class SolicitudCompra implements Calculable {
         this.fechaCreacion = fechaCreacion;
         this.detalleMaterialesSolcitados = detalleMaterialesSolcitados;
         this.observaciones = observaciones;
-        detalle = new ArrayList<>();
+        detalles = new ArrayList<>();
     }
 
     public int getIdSolicitud() {
@@ -91,36 +89,51 @@ public class SolicitudCompra implements Calculable {
         this.observaciones = observaciones;
     }
 
-    public List<DetalleCompra> getDetalle() {
-        return detalle;
+    public List<DetalleCompra> getDetalles() {
+        return detalles;
     }
 
-    public void setDetalle(List<DetalleCompra> detalle) {
-        this.detalle = detalle;
+    public void setDetalles(List<DetalleCompra> detalles) {
+        this.detalles = detalles;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getTotal() {
+        return total;
     }
 
     public void addDetalle(DetalleCompra detalle){
-        this.detalle.add(detalle);
+        this.detalles.add(detalle);
     }
+
     public void cambiarEstado(EstadoSolicitud nuevoEstado, Gerente gerente){
 
     }
 
+
     @Override
-    public double calcularCostoTotal(){
-        return 0;
+    public double calcularCostoTotal() {
+        double total = 0;
+        for (DetalleCompra detalle : detalles) {
+            total += detalle.calcularCostoTotal();
+        }
+        return total;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         SolicitudCompra that = (SolicitudCompra) o;
-        return idSolicitud == that.idSolicitud && Objects.equals(solicitante, that.solicitante) && estado == that.estado && Objects.equals(motivo, that.motivo) && Objects.equals(fechaCreacion, that.fechaCreacion) && Objects.equals(detalleMaterialesSolcitados, that.detalleMaterialesSolcitados) && Objects.equals(observaciones, that.observaciones) && Objects.equals(detalle, that.detalle) && Objects.equals(total, that.total);
+        return idSolicitud == that.idSolicitud && Objects.equals(solicitante, that.solicitante) && estado == that.estado && Objects.equals(motivo, that.motivo) && Objects.equals(fechaCreacion, that.fechaCreacion) && Objects.equals(detalleMaterialesSolcitados, that.detalleMaterialesSolcitados) && Objects.equals(observaciones, that.observaciones) && Objects.equals(detalles, that.detalles) && Objects.equals(total, that.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSolicitud, solicitante, estado, motivo, fechaCreacion, detalleMaterialesSolcitados, observaciones, detalle, total);
+        return Objects.hash(idSolicitud, solicitante, estado, motivo, fechaCreacion, detalleMaterialesSolcitados, observaciones, detalles, total);
     }
 
     @Override
@@ -134,11 +147,11 @@ public class SolicitudCompra implements Calculable {
                 "\n\t - Motivo  : " + motivo +
                 "\n\t - Detalle : " + detalleMaterialesSolcitados +
                 "\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+
-                "\n\t " + detalle +
+                "\n\t " + detalles +
                 "\n\t-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+
                 "\n\t observaciones : " + observaciones+
                 "\n\t-------------------------------------------------------------"+
-                "\n\t Total=" + total+
+                "\n\t Total = " + total+
                 "\n\t-------------------------------------------------------------"
         ;
 

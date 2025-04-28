@@ -31,14 +31,20 @@ public class DetalleCompraProducto extends DetalleCompra implements Calculable {
     }
 
     @Override
-    public double generarModificadorDeCosto(){
-        return 5;
-    };
+    public double generarModificadorDeCosto() {
+        if (producto.isAplicaIVA()) {
+            return 1.15;
+        } else {
+            return 1.0;
+        }
+    }
 
     @Override
-    public double calcularCostoTotal(){
-        return 0;
+    public double calcularCostoTotal() {
+        double costoTotal = producto.getPrecioUnitario() * getCantidad() * generarModificadorDeCosto();
+        return costoTotal;
     }
+
 
 
     @Override
