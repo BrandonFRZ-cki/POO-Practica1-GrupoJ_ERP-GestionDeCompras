@@ -4,6 +4,7 @@ import ec.edu.ups.models.*;
 
 
 import java.util.GregorianCalendar;
+import java.util.logging.SimpleFormatter;
 
 
 public class Default {
@@ -118,20 +119,20 @@ public class Default {
         gerente = new Gerente("0103176194", "Cecilia", "Zambrano", Departamento.DIRECTOR_GENERAL, "123@");
     }
     public void solicitudEjemplo() {
-        // --------------------------------------------------------------- Curitas - Empleado Bradon
+        // --------------------------------------------------------------- Tinta y Papel - Empleado Bradon
         SolicitudCompra solicitud1 = new SolicitudCompra(
                 1,
                 listsController.getEmpleados().get(0),
                 EstadoSolicitud.SOLICITADA,
-                "Falta tinta",
+                "Falta tinta y papel para la impresora",
                 new GregorianCalendar(2025, GregorianCalendar.APRIL, 26),
                 "Utensilios para imprimir contratos",
                 "Sin observaciones"
         );
         solicitud1.addDetalle(new DetalleCompraProducto(
                 1,
-                4,
-                UnidadMedida.UNIDAD,
+                3,
+                UnidadMedida.CAJA,
                 listsController.getProductos().get(0)
         ));
         solicitud1.addDetalle(new DetalleCompraProducto(
@@ -147,8 +148,8 @@ public class Default {
                 2,
                 listsController.getEmpleados().get(1),
                 EstadoSolicitud.SOLICITADA,
-                "Botiquín de primeros auxilios",
-                new GregorianCalendar(2025, GregorianCalendar.APRIL, 26),
+                "Falta de recursos en el botiquin",
+                new GregorianCalendar(2025, 4, 26),
                 "Materiales médicos básicos",
                 "Urgente"
         );
@@ -173,9 +174,9 @@ public class Default {
                 3,
                 listsController.getEmpleados().get(2),
                 EstadoSolicitud.SOLICITADA,
-                "Equipos para nueva contratación",
+                "Equipos para Pedro el nuevo empleado",
                 new GregorianCalendar(2025, GregorianCalendar.APRIL, 26),
-                "Se necesita teclado para nuevo empleado",
+                "Teclado para la estacion de trabajo",
                 "Solicitar lo antes posible"
         );
         solicitud3.addDetalle(new DetalleCompraProducto(
@@ -185,6 +186,47 @@ public class Default {
                 listsController.getProductos().get(5)
         ));
         listsController.agregarSolicitudCompra(solicitud3);
+        // =================================================================== SOLICITUD DE PAQUETE
+        DetalleCompraPaquete paqueteTintas = new DetalleCompraPaquete(4, 4, 23);
+        paqueteTintas.addProducto(listsController.getProductos().get(1));
+        paqueteTintas.addProducto(listsController.getProductos().get(1));
+        paqueteTintas.addProducto(listsController.getProductos().get(1));
+        paqueteTintas.addProducto(listsController.getProductos().get(1));
+
+        SolicitudCompra solicitudTintas = new SolicitudCompra(
+                4,
+                listsController.getEmpleados().get(0), // Empleado: Brandon
+                EstadoSolicitud.EN_REVISION,
+                "Paquete de 4 tintas con descuento",
+                new GregorianCalendar(2025, 4, 27),
+                "Tintas para impresión a color",
+                "Me parece mejor comprar las 4"
+        );
+        solicitudTintas.addDetalle(paqueteTintas);
+        solicitudTintas.addDetalle(new DetalleCompraProducto(
+                1,
+                3,
+                UnidadMedida.CAJA,
+                listsController.getProductos().get(0)
+        ));
+        listsController.agregarSolicitudCompra(solicitudTintas);
+
+        DetalleCompraPaquete paqueteBotiquin = new DetalleCompraPaquete(5, 1, 0.23);
+        paqueteBotiquin.addProducto(listsController.getProductos().get(3)); // Alcohol
+        paqueteBotiquin.addProducto(listsController.getProductos().get(4)); // Gasa 7.5cm x 7.5cm
+        paqueteBotiquin.addProducto(listsController.getProductos().get(2)); // Curitas
+
+        SolicitudCompra solicitudBotiquin = new SolicitudCompra(
+                5,
+                listsController.getEmpleados().get(1), // Empleado: Erick
+                EstadoSolicitud.SOLICITADA,
+                "Reabastecimiento del botiquín",
+                new GregorianCalendar(2025, 4, 27),
+                "Materiales médicos básicos para botiquín",
+                "Mejor podemos comprar un botiquin nuevo para la oficina"
+        );
+        solicitudBotiquin.addDetalle(paqueteBotiquin);
+        listsController.agregarSolicitudCompra(solicitudBotiquin);
     }
 
 
