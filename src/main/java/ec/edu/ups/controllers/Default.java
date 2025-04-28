@@ -4,7 +4,7 @@ import ec.edu.ups.models.*;
 
 
 import java.util.GregorianCalendar;
-import java.util.logging.SimpleFormatter;
+
 
 
 public class Default {
@@ -111,7 +111,7 @@ public class Default {
 
     public void empleadoEjemplo() {
         listsController.agregarEmpleado(new Empleado("0107233710", "Brandon", "Rivera", Departamento.RECURSOS_HUMANOS));
-        listsController.agregarEmpleado(new Empleado("0101010101", "Erick", "Yunga", Departamento.FINANCIERO));
+        listsController.agregarEmpleado(new Empleado("0106978563", "Erick", "Yunga", Departamento.FINANCIERO));
         listsController.agregarEmpleado(new Empleado("0202020202", "Pedro", "Pesantez", Departamento.MARKETING));
     }
 

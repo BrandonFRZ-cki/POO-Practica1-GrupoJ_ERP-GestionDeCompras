@@ -1,8 +1,6 @@
 package ec.edu.ups.views;
 
-import ec.edu.ups.models.Direccion;
-import ec.edu.ups.models.Producto;
-import ec.edu.ups.models.SolicitudCompra;
+import ec.edu.ups.models.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -21,7 +19,7 @@ public class ShowConsole {
     public int showMenuPrincipal() {
         System.out.println("\n======= SISTEMA DE GESTIÓN DE COMPRAS =======");
         System.out.println("-------------- MENU PRINCIPAL ---------------");
-        System.out.println("1.  Resgistrar Proveedor");
+        System.out.println("1.  Registrar Proveedor");
         System.out.println("2.  Registrar Producto");
         System.out.println("3.  Registrar Solicitud de compra");
         System.out.println("4.  Listar Proveedores");
@@ -44,6 +42,17 @@ public class ShowConsole {
         System.out.print("Opcion: ");
         return scanner.nextInt();
     }
+    public int showMenuIngresoSolicitud() {
+        System.out.println("-------------- MENU CREACION DE SOLICITUD ---------------");
+        System.out.println("1.  Crear solicitud de compra con elementos exisstentes" +
+                            "\n\t○ Producto con proveedor");
+        System.out.println("2. Salir");
+        System.out.println("---------------------------------------------------------");
+        System.out.print("Opcion: ");
+        return scanner.nextInt();
+    }
+
+
 
 
     //--------------------------------------------------------- INGRESAR
@@ -88,11 +97,34 @@ public class ShowConsole {
         String ingresado = scanner.nextLine();
         return ingresado;
     }
+    public String ingresoTexto2(String mensaje){
+        System.out.print(mensaje);
+        String ingresado = scanner.next();
+        return ingresado;
+    }
     public String showIngreseProductoSinProveedor() {
         ingresoTexto("A que producto desea registrar el proveedor \n\tIngresa el id del producto : ");
         String productoElegido = scanner.nextLine();
         return productoElegido;
     }
+    public int ingresoNumero(String mensaje){
+        System.out.print(mensaje);
+        int ingresado = scanner.nextInt();
+        return ingresado;
+
+    }
+    public UnidadMedida ingresoUnidadMedida(){
+        System.out.println("Seleccione la unidad de medida:");
+        for (UnidadMedida unidad : UnidadMedida.values()) {
+            System.out.println(unidad.ordinal() + 1 + ". " + unidad);
+        }
+        System.out.print("Ingrese el número de la unidad de medida: ");
+        int unidadIndex = scanner.nextInt() - 1;
+        UnidadMedida unidadSeleccionada = UnidadMedida.values()[unidadIndex];
+        return unidadSeleccionada;
+    }
+
+
 
     //--------------------------------------------------------- LISTAR
     public void showListaProductos(List<Producto> productos) {
@@ -111,6 +143,11 @@ public class ShowConsole {
         for (SolicitudCompra solicitud : solicitudes) {
             solicitud.setTotal(solicitud.calcularCostoTotal());
             System.out.println(solicitud);
+        }
+    }
+    public void showListaEmpleados(List<Empleado> empleados) {
+        for (Empleado empleado : empleados) {
+            System.out.println(empleado.getNombre());
         }
     }
 

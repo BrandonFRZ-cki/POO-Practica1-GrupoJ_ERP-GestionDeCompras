@@ -55,7 +55,7 @@ public class ListsController {
     }
     public void agregarSolicitudCompra(SolicitudCompra solicitud){
         solicitudes.add(solicitud);
-        showConsole.showMessage("\n\t* Empleado agregado exitosamente\n\t* Solicitud de Compra Modificada");
+        showConsole.showMessage("\n\t* Solicitud agregada exitosamente\n\t* Solicitud de Compra Modificada");
     }
 
 }
