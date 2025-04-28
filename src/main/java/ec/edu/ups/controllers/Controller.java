@@ -219,7 +219,7 @@ public class Controller {
     public void op7BuscarProveedorId(){
 
         showConsole.showMessage("\n---- Ha seleccionado la opcion 7. \n\t-------------- Buscar Proveedor por ID ");
-        String id = showConsole.ingresoId("Proveedor a buscar");
+        String id =showConsole.ingresoId("Proveedor a buscar");
         Proveedor proveedorTemp = busqueda.busquedaPorId(listsController.getProductos(),id);
         if (proveedorTemp == null){
             showConsole.showError("No se a encontrado el provedor");
@@ -228,8 +228,5 @@ public class Controller {
         }
 
     }
-
-
-
 
 }
