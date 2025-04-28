@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 public class Controller {
     private ShowConsole showConsole;
     private ListsController listsController;
+    private Busqueda busqueda = new Busqueda();
 
     public Controller(ListsController listsController) {
         this.showConsole = new ShowConsole();
@@ -39,7 +40,7 @@ public class Controller {
                     op6ListarSolicitudes();
                     break;
                 case 7:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 7. \n\t-------------- Buscar Proveedor por ID ");
+                   op7BuscarProveedorId();
                     break;
                 case 8:
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 8. \n\t-------------- Buscar Producto por nombre");
@@ -214,4 +215,21 @@ public class Controller {
         showConsole.showListaSolicitudes(listsController.getSolicitudes());
 
     }
+
+    public void op7BuscarProveedorId(){
+
+        showConsole.showMessage("\n---- Ha seleccionado la opcion 7. \n\t-------------- Buscar Proveedor por ID ");
+        String id = showConsole.ingresoId("Proveedor a buscar");
+        Proveedor proveedorTemp = busqueda.busquedaPorId(listsController.getProductos(),id);
+        if (proveedorTemp == null){
+            showConsole.showError("No se a encontrado el provedor");
+        }else {
+            System.out.println(proveedorTemp);
+        }
+
+    }
+
+
+
+
 }

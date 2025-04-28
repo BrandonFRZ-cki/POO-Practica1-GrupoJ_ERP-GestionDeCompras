@@ -6,15 +6,15 @@ import ec.edu.ups.models.Proveedor;
 import java.util.List;
 
 public class Busqueda {
-    private static Proveedor busquedaPorId(List<Proveedor> proveedores,String id){
-        for (Proveedor proveedor : proveedores){
-            if (proveedor.getIdentificacion().equalsIgnoreCase(id)) {
-                return proveedor;
+    public Proveedor busquedaPorId(List<Producto> productos,String id){
+        for (int i = 0; i < productos.size(); i++) {
+            if (id.equals(productos.get(i).getProveedor().getIdentificacion())) {
+                return productos.get(i).getProveedor();
             }
         }
         return null;
     }
-    public static Producto productoPorNombre(List<Producto> productos, String nombre){
+    public Producto productoPorNombre(List<Producto> productos, String nombre){
         for (Producto producto : productos) {
             if (producto.getNombre().equalsIgnoreCase(nombre)){
                 return producto;
