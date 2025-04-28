@@ -49,7 +49,7 @@ public class Controller {
                    op9BuscarPorNumero();
                     break;
                 case 10:
-                    showConsole.showMessage("\n---- Ha seleccionado la opcion 10. \n\t-------------- Aprobar / Rechazar Solicitud de compra");
+                    op10AprobarRechazar();
                     break;
                 case 11:
                     showConsole.showMessage("\n---- Ha seleccionado la opcion 11. \n\t-------------- Salir del programa");
@@ -287,6 +287,54 @@ public class Controller {
             showConsole.showError("No se ha encontrado la solicitud con ese numero");
         }else {
             System.out.println(solicitudEncon);
+        }
+    }
+
+    public void op10AprobarRechazar() {
+        showConsole.showMessage("\n---- Ha seleccionado la opción 10. \n\tAprobar / Rechazar Solicitud de compra");
+
+        // Solicitar la contraseña
+        String psswIngresada = showConsole.ingresoPssw();
+
+        // Validar la contraseña
+        Default ejemplo = new Default();
+        ejemplo.gerenteEjemplo();
+        if (!psswIngresada.equals(ejemplo.getGerente().getPssw())){
+            showConsole.showError("Contraseña incorrecta. Acceso denegado.");
+            return;
+        }
+
+        // Mostrar solicitudes
+        showConsole.showMessage("\nSolicitudes disponibles:");
+        for (SolicitudCompra solicitud : listsController.getSolicitudes()) {
+            System.out.println("ID: " + solicitud.getIdSolicitud() + " | Estado: " + solicitud.getEstado());
+        }
+
+        // Seleccionar solicitud
+        int idSolicitud = showConsole.ingresoNumero("Ingrese el ID de la solicitud: ");
+        SolicitudCompra solicitudSeleccionada = null;
+        for (SolicitudCompra solicitud : listsController.getSolicitudes()) {
+            if (solicitud.getIdSolicitud() == idSolicitud) {
+                solicitudSeleccionada = solicitud;
+                break;
+            }
+        }
+
+        if (solicitudSeleccionada == null) {
+            showConsole.showError("Solicitud no encontrada.");
+            return;
+        }
+
+        // Aprobar o rechazar
+        int opcion = showConsole.ingresoNumero("Seleccione:\n1. Aprobar\n2. Rechazar\nOpción: ");
+        if (opcion == 1) {
+            solicitudSeleccionada.setEstado(EstadoSolicitud.APROBADA);
+            showConsole.showMessage("La solicitud ha sido APROBADA.");
+        } else if (opcion == 2) {
+            solicitudSeleccionada.setEstado(EstadoSolicitud.RECHAZADA);
+            showConsole.showMessage("La solicitud ha sido RECHAZADA.");
+        } else {
+            showConsole.showError("Opción no válida.");
         }
     }
 

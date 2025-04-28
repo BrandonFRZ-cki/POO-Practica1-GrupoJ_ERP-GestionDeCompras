@@ -16,6 +16,10 @@ public class Default {
         this.gerente = new Gerente();
     }
 
+    public Gerente getGerente() {
+        return gerente;
+    }
+
     public ListsController getListsController() {
         return listsController;
     }
